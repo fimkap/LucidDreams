@@ -10,7 +10,7 @@
 import CoreGraphics
 
 /// A layout that diplays its background content behind its foreground content.
-struct BackgroundLayout<Background: Layout, Foreground: Layout where Background.Content == Foreground.Content>: Layout {
+struct BackgroundLayout<Background: Layout, Foreground: Layout>: Layout where Background.Content == Foreground.Content {
     typealias Content = Background.Content
 
     var background: Background
@@ -35,7 +35,7 @@ struct BackgroundLayout<Background: Layout, Foreground: Layout where Background.
 */
 extension Layout {
     /// Returns a layout that shows `self` in front of `background`.
-    func withBackground<Background: Layout where Background.Content == Content>(_ background: Background) -> BackgroundLayout<Background, Self> {
+    func withBackground<Background: Layout>(_ background: Background) -> BackgroundLayout<Background, Self> where Background.Content == Content {
         return BackgroundLayout(background: background, foreground: self)
     }
 }

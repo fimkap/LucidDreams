@@ -42,7 +42,7 @@ extension DreamListViewController {
             }
         }
 
-        var plistRepresentation: AnyObject {
+        var plistRepresentation: Any {
             switch self {
                 case .viewing, .sharing:
                     return "viewing"

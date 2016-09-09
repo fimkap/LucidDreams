@@ -42,7 +42,7 @@ private func makeImage(from dream: Dream) -> UIImage {
     Creates an array of images from an array of dreams. This is called when the
     user shares dreams in the `DreamListViewController`.
 */
-func makeImages(from dreams: [Dream], completion: ([UIImage]) -> Void) {
+func makeImages(from dreams: [Dream], completion: @escaping ([UIImage]) -> Void) {
     let backgroundQueue = DispatchQueue(label: "com.example.apple-samplecode.LucidDreams.renderer.background")
 
     backgroundQueue.async {

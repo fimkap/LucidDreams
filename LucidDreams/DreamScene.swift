@@ -123,7 +123,7 @@ class DreamScene: SKScene {
 }
 
 extension Dream.Effect {
-    private var insetsForDisplaying: UIEdgeInsets {
+    fileprivate var insetsForDisplaying: UIEdgeInsets {
         switch self {
             case .fireBreathing:
                 return UIEdgeInsets(top: 0, left: 100, bottom: -80, right: 0)

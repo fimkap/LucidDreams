@@ -21,7 +21,7 @@ struct InsetLayout<Child: Layout>: Layout {
         This initializer is private because the canonical way to inset a layout
         is by using the `withInsets(...)` method family defined below.
     */
-    private init(child: Child, insets: UIEdgeInsets) {
+    init(child: Child, insets: UIEdgeInsets) {
         self.child = child
         self.insets = insets
     }

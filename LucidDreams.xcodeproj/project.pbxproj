@@ -389,6 +389,7 @@
 				TargetAttributes = {
 					1604A6E21CCC2D9E00F87ED0 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = VN6H2JZ3DV;
 						LastSwiftMigration = 0800;
 						LastSwiftUpdateCheck = 0800;
 						ProvisioningStyle = Automatic;
@@ -626,6 +627,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = VN6H2JZ3DV;
 				INFOPLIST_FILE = LucidDreams/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.LucidDreams";
@@ -639,6 +641,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = VN6H2JZ3DV;
 				INFOPLIST_FILE = LucidDreams/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.LucidDreams";

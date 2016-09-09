@@ -14,7 +14,7 @@ import CoreGraphics
     A layout that looks similar to a `DecoratingLayout` except that its decoration
     layout is composed of accessory layouts in a cascading layout.
 */
-struct MultiPaneLayout<ChildContent: Layout, Accessory: Layout where ChildContent.Content == Accessory.Content>: Layout {
+struct MultiPaneLayout<ChildContent: Layout, Accessory: Layout>: Layout where ChildContent.Content == Accessory.Content {
     typealias Content = ChildContent.Content
 
     /*

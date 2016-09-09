@@ -107,7 +107,7 @@ extension Dream.Effect {
         Calculates where the effect node should be placed inside its `SKView`
         based on the size of the collection view cell.
     */
-    private func position(in bounds: CGRect) -> CGPoint {
+    fileprivate func position(in bounds: CGRect) -> CGPoint {
         var position = CGPoint(x: bounds.midX, y: bounds.midY)
 
         switch self {

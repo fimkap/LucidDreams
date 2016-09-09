@@ -21,7 +21,7 @@ extension Dream {
             Note: this is a private initializer. The canonical way to obtain a diff
             is to call the `diffed(with:)` method.
         */
-        private init(from: Dream, to: Dream) {
+        fileprivate init(from: Dream, to: Dream) {
             // Creature changes.
             if from.creature != to.creature {
                 creatureChange = (from: from.creature, to: to.creature)

@@ -73,7 +73,7 @@ struct DreamListViewControllerModel: Equatable {
             Private so that the only way to create a diff is using the `diffed(with:)`
             method.
         */
-        private init(dreamChange: DreamChange?, from: DreamListViewControllerModel, to: DreamListViewControllerModel, favoriteCreatureChanged: Bool) {
+        fileprivate init(dreamChange: DreamChange?, from: DreamListViewControllerModel, to: DreamListViewControllerModel, favoriteCreatureChanged: Bool) {
             self.dreamChange = dreamChange
             self.from = from
             self.to = to

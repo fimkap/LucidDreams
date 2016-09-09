@@ -13,8 +13,8 @@ import CoreGraphics
     The layout used for the `Dream` preview functionality in `DreamPreviewHeaderReusableView`.
     This type composes multiple smaller layouts together to form its layout.
 */
-struct DreamEffectLayout<ChildContent: Layout, Decoration: Layout, Effect: Layout where
-    ChildContent.Content == Decoration.Content, ChildContent.Content == Effect.Content>: Layout {
+struct DreamEffectLayout<ChildContent: Layout, Decoration: Layout, Effect: Layout>: Layout where
+ChildContent.Content == Decoration.Content, ChildContent.Content == Effect.Content {
     typealias Content = ChildContent.Content
 
     private var content: ChildContent

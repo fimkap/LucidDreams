@@ -17,8 +17,8 @@ import CoreGraphics
     like `InsetLayout`!
 */
 struct DecoratingLayout<
-    ChildContent: Layout, Decoration: Layout where ChildContent.Content == Decoration.Content
->: Layout {
+    ChildContent: Layout, Decoration: Layout>: Layout where ChildContent.Content == Decoration.Content
+ {
     typealias Content = ChildContent.Content
 
     var content: InsetLayout<ChildContent>

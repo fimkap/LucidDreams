@@ -73,7 +73,7 @@ class DreamListViewController: UITableViewController {
         our UI update code, preserving "Locality of Reasoning" for our UI (this
         is described in the WWDC session).
     */
-    func withValues(_ mutations: @noescape (inout Model, inout State) -> Void) {
+    func withValues(_ mutations: (inout Model, inout State) -> Void) {
         let oldModel = self.model
 
         mutations(&self.model, &self.state)
@@ -127,7 +127,7 @@ class DreamListViewController: UITableViewController {
 
         // Need to register any undo changes.
         if diff.hasAnyChanges {
-            undoManager?.registerUndoWithTarget(self, handler: { target in
+            undoManager?.registerUndo(withTarget: self, handler: { target in
                 /*
                     It's important that this `withValues(...)` method is called
                     inside the undo manager rather than setting the model property
@@ -266,7 +266,7 @@ class DreamListViewController: UITableViewController {
 
     override func decodeRestorableState(with coder: NSCoder) {
         if let representation = coder.decodeObject(forKey: "state"),
-            var newState = State(plistRepresentation: representation) {
+            var newState = State(plistRepresentation: representation as AnyObject) {
             newState.validateWithModel(model: model)
             withValues { _, state in
                 state = newState
@@ -435,7 +435,7 @@ class DreamListViewController: UITableViewController {
 
     // MARK: Segue Handling
 
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier.flatMap(SegueIdentifier.init) else { return }
 
         let selectedDreamIndex = tableView.indexPathForSelectedRow!.row
@@ -510,7 +510,7 @@ class DreamListViewController: UITableViewController {
         Shares the array of dreams, invoking `completion` when that's complete.
         This disables user interaction until the sharing is complete.
     */
-    func share(_ dreams: [Dream], completion: () -> Void) {
+    func share(_ dreams: [Dream], completion: @escaping () -> Void) {
         if presentingViewController == nil {
             view.isUserInteractionEnabled = false
 

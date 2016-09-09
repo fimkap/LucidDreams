@@ -60,7 +60,7 @@ class DreamDetailViewController: UICollectionViewController, UICollectionViewDel
 
     // MARK: Properties
 
-    var dreamDidChange: ((dream: Dream) -> Void)?
+    var dreamDidChange: ((_ dream: Dream) -> Void)?
 
     private var dream: Dream!
 
@@ -87,7 +87,7 @@ class DreamDetailViewController: UICollectionViewController, UICollectionViewDel
         our UI update code, preserving "Locality of Reasoning" for our UI (this
         is described in the WWDC session).
     */
-    private func withDream(_ mutateDream: @noescape (inout Dream) -> Void) {
+    private func withDream(_ mutateDream: (inout Dream) -> Void) {
         guard var dream = self.dream else {
             fatalError("A dream should be set by this point.")
         }
@@ -159,7 +159,7 @@ class DreamDetailViewController: UICollectionViewController, UICollectionViewDel
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        dreamDidChange?(dream: dream)
+        dreamDidChange?(dream)
     }
 
     // MARK: UICollectionViewDelegate & UICollectionViewDataSource
@@ -286,7 +286,7 @@ class DreamDetailViewController: UICollectionViewController, UICollectionViewDel
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard kind == UICollectionElementKindSectionHeader else {
-            fatalError("\(self.dynamicType) only has a custom section header.")
+            fatalError("\(type(of: self)) only has a custom section header.")
         }
 
         let section = Section(at: indexPath)
