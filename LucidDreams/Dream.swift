@@ -28,6 +28,7 @@ struct Dream: Equatable {
         case crusty
         case shark
         case dragon
+        case pug
 
         /// Returns the associated image for the creature.
         var image: UIImage {
@@ -39,6 +40,7 @@ struct Dream: Equatable {
                 case .crusty: name = "crusty"
                 case .shark: name = "shark"
                 case .dragon: name = "dragon"
+                case .pug: name = "pug"
             }
 
             return UIImage(named: name)!
@@ -53,6 +55,7 @@ struct Dream: Equatable {
                 case .crusty: return "Crusty"
                 case .shark: return "Shark"
                 case .dragon: return "Dragon"
+                case .pug: return "Pug"
             }
         }
 
@@ -63,7 +66,8 @@ struct Dream: Equatable {
             .unicorn(.white),
             .crusty,
             .shark,
-            .dragon
+            .dragon,
+            .pug
         ]
     }
 
@@ -140,6 +144,7 @@ func ==(_ lhs: Dream.Creature, _ rhs: Dream.Creature) -> Bool {
         case (.crusty, .crusty): return true
         case (.shark, .shark): return true
         case (.dragon, .dragon): return true
+        case (.pug, .pug): return true
 
         default: return false
     }
