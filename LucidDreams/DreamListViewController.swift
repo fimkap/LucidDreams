@@ -149,7 +149,7 @@ class DreamListViewController: UITableViewController {
             end of this method.
         */
         let editing: Bool
-        let rightBarItem: (UIBarButtonSystemItem, enabled: Bool)?
+        let rightBarItem: (UIBarButtonItem.SystemItem, enabled: Bool)?
 
         /*
             A subset of the bar buttons that we can have as a bar button item in
@@ -338,7 +338,7 @@ class DreamListViewController: UITableViewController {
 
     func configureCreatureCell(_ cell: CreatureCell, at indexPath: IndexPath) {
         let creature = model.favoriteCreature
-        let selectionStyle: UITableViewCellSelectionStyle
+        let selectionStyle: UITableViewCell.SelectionStyle
         if case .viewing = state {
             selectionStyle = .default
         }
@@ -352,7 +352,7 @@ class DreamListViewController: UITableViewController {
     }
 
     func configureDreamCell(_ cell: DreamCell, at indexPath: IndexPath) {
-        let accessoryType: UITableViewCellAccessoryType
+        let accessoryType: UITableViewCell.AccessoryType
         switch state {
             case .duplicating:
                 accessoryType = .none
@@ -513,20 +513,20 @@ class DreamListViewController: UITableViewController {
     func share(_ dreams: [Dream], completion: @escaping () -> Void) {
         if presentingViewController == nil {
             view.isUserInteractionEnabled = false
-
-            makeImages(from: dreams, completion: { [weak self] images in
+            
+            makeImages(from: dreams) { [weak self] images in
                 guard let strongSelf = self else { return }
 
                 strongSelf.view.isUserInteractionEnabled = true
 
                 let activityViewController = UIActivityViewController(activityItems: images, applicationActivities: [])
 
-                activityViewController.completionWithItemsHandler = { _ in
-                    completion()
-                }
+//                activityViewController.completionWithItemsHandler = { _ in // Type of expression is ambiguous without a type annotation
+//                    completion()
+//                }
 
                 strongSelf.present(activityViewController, animated: true, completion: nil)
-            })
+            }
         }
     }
 }
