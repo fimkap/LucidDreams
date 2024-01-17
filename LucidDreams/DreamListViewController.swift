@@ -422,7 +422,7 @@ class DreamListViewController: UITableViewController {
                 withValues { _, state in state = .selecting(selectedRows: combinedRows) }
 
             case .duplicating:
-                withValues { model, _ in
+                withValues { model, state in
                     var selectedDream = model.dreams[indexPath.row]
                     selectedDream.description += " (copy)"
                     model.append(selectedDream)
