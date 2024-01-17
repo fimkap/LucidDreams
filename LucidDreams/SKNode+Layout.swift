@@ -12,7 +12,7 @@ import SpriteKit
 extension SKNode: Layout {
     typealias Content = SKNode
 
-    func layout(in rect: CGRect) {
+    @objc func layout(in rect: CGRect) {
         // `SKNode` has a flipped coordinate system, so invert our Y coordinates.
         let height = parent?.frame.size.height ?? 0
         position = CGPoint(x: rect.midX, y: height - rect.midY)

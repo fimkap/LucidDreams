@@ -135,7 +135,7 @@ class DreamDetailViewController: UICollectionViewController, UICollectionViewDel
 
         collectionView?.allowsMultipleSelection = true
 
-        collectionView?.register(DreamPreviewHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: DreamPreviewHeaderReusableView.reuseIdentifier)
+        collectionView?.register(DreamPreviewHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: DreamPreviewHeaderReusableView.reuseIdentifier)
 
         // Set up initially selected cells.
         let selectedCreatureIndex = Dream.Creature.all.index(of: self.dream.creature)!
@@ -182,14 +182,14 @@ class DreamDetailViewController: UICollectionViewController, UICollectionViewDel
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextEntryCollectionViewCell.reuseIdentifier, for: indexPath) as! TextEntryCollectionViewCell
                 cell.textField.text = dream.description
                 cell.textField.keyboardType = .default
-                NotificationCenter.default.addObserver(self, selector: #selector(descriptionTextDidChange(_:)), name: .UITextFieldTextDidChange, object: cell.textField)
+                NotificationCenter.default.addObserver(self, selector: #selector(descriptionTextDidChange(_:)), name: UITextField.textDidChangeNotification, object: cell.textField)
                 return cell
 
             case .numberOfCreatures:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextEntryCollectionViewCell.reuseIdentifier, for: indexPath) as! TextEntryCollectionViewCell
                 cell.textField.text = "\(dream.numberOfCreatures)"
                 cell.textField.keyboardType = .numberPad
-                NotificationCenter.default.addObserver(self, selector: #selector(numberOfCreaturesTextDidChange(_:)), name: .UITextFieldTextDidChange, object: cell.textField)
+                NotificationCenter.default.addObserver(self, selector: #selector(numberOfCreaturesTextDidChange(_:)), name: UITextField.textDidChangeNotification, object: cell.textField)
                 return cell
 
             case .creature:
@@ -280,12 +280,12 @@ class DreamDetailViewController: UICollectionViewController, UICollectionViewDel
             case .description, .numberOfCreatures:
                 let textEntryCell = cell as! TextEntryCollectionViewCell
 
-                NotificationCenter.default.removeObserver(self, name: .UITextFieldTextDidChange, object: textEntryCell.textField)
+                NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: textEntryCell.textField)
         }
     }
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard kind == UICollectionElementKindSectionHeader else {
+        guard kind == UICollectionView.elementKindSectionHeader else {
             fatalError("\(type(of: self)) only has a custom section header.")
         }
 

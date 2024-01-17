@@ -27,7 +27,7 @@ struct InsetLayout<Child: Layout>: Layout {
     }
 
     mutating func layout(in rect: CGRect) {
-        let rect = UIEdgeInsetsInsetRect(rect, insets)
+        let rect = rect.inset(by: insets)
 
         child.layout(in: rect)
     }
