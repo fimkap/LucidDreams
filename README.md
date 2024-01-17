@@ -1,14 +1,14 @@
 # LucidDreams
 
 ## Version
-1.0
+1.0 2024-01-17
 
 ## Build Requirements
-+ Xcode 8.0 or later
-+ iOS 10.0 SDK or later
++ Xcode 15.2 or later
++ iOS 17.2 SDK or later
 
 ## Runtime Requirements
-+ iOS 10.0 SDK or later
++ iOS 17.2 SDK or later
 
 ## About LucidDreams
 
